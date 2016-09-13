@@ -13,7 +13,7 @@
 			"command": "webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
 			"env": {
 				"DEBUG": "news:*",
-				"NODE_ENV": "development"
+				"NODE_ENV": "dev"
 			}
 		},
 		"build": {

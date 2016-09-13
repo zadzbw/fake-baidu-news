@@ -81,7 +81,7 @@ var webpackConfig = {
 
 var plugins = [
     new webpack.DefinePlugin({
-        'env': {
+        'process.env': {
             NODE_ENV: JSON.stringify(environment)
         }
     }),
