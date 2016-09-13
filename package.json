@@ -4,13 +4,32 @@
 	"description": "练手用",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "better-npm-run start",
+		"build": "better-npm-run build",
+		"server": "nodemon server.js"
+	},
+	"betterScripts": {
+		"start": {
+			"command": "webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
+			"env": {
+				"DEBUG": "news:*",
+				"NODE_ENV": "development"
+			}
+		},
+		"build": {
+			"command": "webpack --progress --profile --colors",
+			"env": {
+				"DEBUG": "news:*",
+				"NODE_ENV": "production"
+			}
+		}
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/zadzbw/fake-baidu-news.git"
 	},
 	"keywords": [
+		"fake",
 		"baidu",
 		"news"
 	],
@@ -31,6 +50,7 @@
 		"babel-preset-react": "^6.5.0",
 		"babel-preset-react-hmre": "^1.1.1",
 		"babel-preset-stage-0": "^6.5.0",
+		"better-npm-run": "0.0.11",
 		"body-parser": "^1.15.2",
 		"clean-webpack-plugin": "^0.1.9",
 		"css-loader": "^0.23.1",
@@ -38,6 +58,7 @@
 		"eslint": "^2.10.2",
 		"eslint-loader": "^1.3.0",
 		"eslint-plugin-react": "^5.1.1",
+		"express": "^4.14.0",
 		"extract-text-webpack-plugin": "^1.0.1",
 		"file-loader": "^0.8.5",
 		"html-webpack-plugin": "^2.16.1",
