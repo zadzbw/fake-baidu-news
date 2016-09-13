@@ -1,0 +1,23 @@
+{
+  "name": "fake-baidu-news",
+  "version": "1.0.0",
+  "description": "练手用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zadzbw/fake-baidu-news.git"
+  },
+  "keywords": [
+    "baidu",
+    "news"
+  ],
+  "author": "bowen.zhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zadzbw/fake-baidu-news/issues"
+  },
+  "homepage": "https://github.com/zadzbw/fake-baidu-news#readme"
+}
