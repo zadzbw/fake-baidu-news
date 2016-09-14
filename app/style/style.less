@@ -1,9 +1,13 @@
-@import './variables';
+// Core variables and mixins
+@import "variables.less";
+@import "mixins.less";
 
-body {
-  font-size: @fontSize;
-}
+// Reset and dependencies
+@import "normalize.less";
 
-.active123 {
-  color: green;
-}
+// Core CSS
+@import "scaffolding.less";
+@import "type.less";
+
+// Utility classes
+@import "utilities.less";

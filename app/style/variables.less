@@ -1,1 +1,73 @@
-@fontSize: 16px;
+// Colors
+// ---------------------------
+
+@body-bg:               #fff;
+@text-color:            @gray-dark;
+
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 46.7%); // #777
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+
+@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+@brand-success:         #5cb85c;
+@brand-info:            #5bc0de;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+
+@state-success-text:             #3c763d;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #31708f;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #8a6d3b;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #a94442;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+
+@color-style-1: #5dc9e6;
+@color-style-2: #f773bd;
+@color-style-3: #fdbb7d;
+@color-style-4: #6dded5;
+@color-style-5: #a06081;
+@color-style-6: #f27863;
+@color-style-7: #497cb1;
+@color-style-8: #96a94b;
+
+
+//== Font
+// ---------------------------
+
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-sm:          12px;
+@font-size-base:        14px;
+@font-size-lg:          16px;
+@font-size-xl:          18px;
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+
+
+// Animation
+// ---------------------------
+
+@duration:        0.2s;
+@cubic-bezier:    cubic-bezier(.19, .40, .17, .85);
+
+
+// Structure
+// ---------------------------
+
+@gap:           0.625rem;
