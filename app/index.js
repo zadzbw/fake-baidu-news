@@ -1,4 +1,5 @@
 //styles
+import '../node_modules/font-awesome/less/font-awesome.less';
 import './style/style.less';
 
 //libs

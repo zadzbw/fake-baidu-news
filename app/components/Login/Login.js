@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Icon from 'react-fa';
 
 let log = debug('news:/component/Login');
 
@@ -27,13 +26,13 @@ export default class Login extends React.Component {
                 <div>
                     <p>
                         <span className="fa-stack">
-                            <Icon name="camera-retro" size="lg"/>
+                            <i className="fa fa-camera-retro fa-lg"/>
                         </span>
                         username:<input type="text" ref='username'/>
                     </p>
                     <p>
                         <span className="fa-stack">
-                            <Icon name="ban" size="lg" className="text-danger"/>
+                            <i className="fa fa-ban fa-lg"/>
                         </span>
                         password:<input type="text" ref='password'/>
                     </p>
