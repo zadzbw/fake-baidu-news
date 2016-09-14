@@ -5,21 +5,23 @@ import LoginAction from '../actions/LoginAction';
 import Login from '../components/Login/Login';
 
 class LoginContainer extends React.Component {
-
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <Login login={this.props.Login}/>
+            <Login
+                data={this.props.data}
+                login={this.props.login}
+            />
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        text: state.Login.text,
+        data: state.Login.data,
         status: state.Login.status,
         isLogin: state.Login.isLogin
     };
@@ -27,7 +29,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        Login: (username, password) => dispatch(LoginAction.login(username, password))
+        login: (username, password) => dispatch(LoginAction.login(username, password))
     };
 }
 
