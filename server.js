@@ -23,32 +23,15 @@ app.use('/download', (req, res, next)=> {
 });
 
 app.post('/auth', (req, res)=> {
-    var {grant_type} = req.body;
-
-    if (grant_type == 'password') {
-        var {username, password} = req.body;
-        if (username == 'admin' && password == 'admin') {
-            return res.json({
-                access_token: Math.random().toString(36).substring(7),
-                refresh_token: Math.random().toString(36).substring(7),
-                expires_in: '1251238627',
-                token_type: 'JWT'
-            });
-        } else {
-            res.status(404).send({
-                error: 'unauthorized'
-            });
-        }
-    } else if (grant_type == 'refresh_token') {
+    let {username, password} = req.body;
+    if (username == 'admin' && password == 'admin') {
         return res.json({
             access_token: Math.random().toString(36).substring(7),
-            refresh_token: Math.random().toString(36).substring(7),
-            expires_in: '1251238627',
-            token_type: 'JWT'
+            refresh_token: Math.random().toString(36).substring(7)
         });
     } else {
         res.status(404).send({
-            error: 'incorrect grant_type'
+            error: 'unauthorized'
         });
     }
 });

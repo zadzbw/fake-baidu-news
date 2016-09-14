@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Icon} from 'react-fa';
+import Icon from 'react-fa';
 
 let log = debug('news:/component/Login');
 
@@ -17,7 +17,7 @@ export default class Login extends React.Component {
     }
 
     render() {
-        log(123);
+        log('render');
         return (
             <div>
                 <div>
@@ -33,7 +33,7 @@ export default class Login extends React.Component {
                         </span>
                         password:<input type="text" ref='password'/>
                     </p>
-                    <button onClick={this.login}>登录</button>
+                    <button onTouchTap={this.login}>登录</button>
                 </div>
             </div>
         );

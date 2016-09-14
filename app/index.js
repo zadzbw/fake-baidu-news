@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+//containers
 import LoginContainer from 'containers/LoginContainer';
 
 //store
