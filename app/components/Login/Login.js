@@ -38,7 +38,6 @@ export default class Login extends React.Component {
                         password:<input type="text" ref='password'/>
                     </p>
                     <button onTouchTap={this.login}>登录</button>
-                    {this.props.data.access_token}
                 </div>
             </div>
         );
