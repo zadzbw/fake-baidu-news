@@ -1,7 +1,6 @@
 /**
  * Created by zad on 16/7/29.
  */
-
 import 'whatwg-fetch';
 
 const domain = 'http://localhost:5000';

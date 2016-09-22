@@ -13,6 +13,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import HomeContainer from 'containers/Home/HomeContainer';
 import MainContainer from 'containers/Main/MainContainer';
 import LoginContainer from 'containers/Login/LoginContainer';
+import SingleContainer from 'containers/Single/SingleContainer';
 
 //store
 import ReduxRootStore from './store/ReduxRootStore';
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Route path="/login" component={LoginContainer}/>
             <Route path="/home" component={HomeContainer}/>
             <Route path="/main" component={MainContainer}>
+                <Route path="post/:postId" component={SingleContainer}/>
             </Route>
         </Router>
     </Provider>, document.getElementById('wrap'));

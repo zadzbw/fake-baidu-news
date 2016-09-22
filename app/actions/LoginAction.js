@@ -9,7 +9,7 @@ export const DO_LOGIN = 'DO_LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
-let LoginAction = {
+var LoginAction = {
     login(username, password){
         return function (dispatch) {
             dispatch({
@@ -33,7 +33,6 @@ let LoginAction = {
                         data: err
                     });
                 });
-
         };
     }
 };
