@@ -1,0 +1,34 @@
+@import "../../style/variables";
+
+.header {
+    min-width: 320px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: @font-size-base;
+    font-weight: 400;
+    color: #fff;
+    background-color: @color-blue;
+    overflow: hidden;
+
+    &-title {
+        display: inline-block;
+        width: 75%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: top;
+    }
+
+    .toolbar-left {
+        position: absolute;
+        left: 8px;
+        font-size: @font-size-xl;
+    }
+
+    .toolbar-right {
+        position: absolute;
+        right: 8px;
+        font-size: @font-size-xl;
+    }
+}

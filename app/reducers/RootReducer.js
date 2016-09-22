@@ -4,9 +4,11 @@
 import {combineReducers} from 'redux';
 
 import Login from './LoginReducer';
+import HotNews from './HotNewsReducer';
 
 const RootReducer = combineReducers({
-    Login
+    Login,
+    HotNews
 });
 
 export default RootReducer;
