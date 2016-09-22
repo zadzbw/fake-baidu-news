@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import LoginAction from '../actions/LoginAction';
-import Login from '../components/Login/Login';
+import LoginAction from '../../actions/LoginAction';
+import Login from '../../components/Login/Login';
 
 class LoginContainer extends React.Component {
     constructor(props) {
