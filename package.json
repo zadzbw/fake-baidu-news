@@ -4,25 +4,9 @@
 	"description": "练手用",
 	"main": "index.js",
 	"scripts": {
-		"start": "better-npm-run start",
-		"build": "better-npm-run build",
+		"start": "NODE_ENV=dev webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
+		"build": "NODE_ENV=production webpack --progress --profile --colors",
 		"server": "nodemon server.js"
-	},
-	"betterScripts": {
-		"start": {
-			"command": "webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
-			"env": {
-				"DEBUG": "news:*",
-				"NODE_ENV": "dev"
-			}
-		},
-		"build": {
-			"command": "webpack --progress --profile --colors",
-			"env": {
-				"DEBUG": "news:*",
-				"NODE_ENV": "production"
-			}
-		}
 	},
 	"repository": {
 		"type": "git",
@@ -50,7 +34,6 @@
 		"babel-preset-react": "^6.5.0",
 		"babel-preset-react-hmre": "^1.1.1",
 		"babel-preset-stage-0": "^6.5.0",
-		"better-npm-run": "0.0.11",
 		"body-parser": "^1.15.2",
 		"clean-webpack-plugin": "^0.1.9",
 		"css-loader": "^0.23.1",

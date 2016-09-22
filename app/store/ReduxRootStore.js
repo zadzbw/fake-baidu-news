@@ -5,9 +5,14 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import RootReducer from '../reducers/RootReducer';
 
-const ReduxRootStore = createStore(RootReducer, compose(
-    applyMiddleware(thunk),
-    process.env.NODE_ENV !== 'production' && typeof window !== 'undefined' && window.devToolsExtension && window.devToolsExtension()
-));
+let ReduxRootStore;
+if (process.env.NODE_ENV == 'dev') {
+    ReduxRootStore = createStore(RootReducer, compose(
+        applyMiddleware(thunk),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+    ));
+} else {
+    ReduxRootStore = createStore(RootReducer, applyMiddleware(thunk));
+}
 
 export default ReduxRootStore;

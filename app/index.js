@@ -22,6 +22,6 @@ injectTapEventPlugin();
 ReactDOM.render(
     <Provider store={ReduxRootStore}>
         <Router history={browserHistory}>
-            <Route path="/login" component={LoginContainer}/>
+            <Route path="/" component={LoginContainer}/>
         </Router>
     </Provider>, document.getElementById('wrap'));

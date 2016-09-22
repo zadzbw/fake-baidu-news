@@ -4,20 +4,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AutoPreFixer = require('autoprefixer');
-var _debug = require('debug');
-var debug = _debug('news:webpack:config');
-
-var __PROD__ = 'production';
 
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+var TARGET = process.env.npm_lifecycle_event;
 
 //环境
-var environment = process.env.NODE_ENV || __PROD__;
-
-debug('Start!!!!!!!!!');
 var webpackConfig = {
     node: {
         net: 'empty',
@@ -79,10 +73,12 @@ var webpackConfig = {
     }
 };
 
+var env = TARGET == 'build' ? 'production' : 'dev';
+
 var plugins = [
     new webpack.DefinePlugin({
         'process.env': {
-            NODE_ENV: JSON.stringify(environment)
+            NODE_ENV: JSON.stringify(env)
         }
     }),
     new ExtractTextPlugin('style.[hash].css', {
@@ -100,9 +96,8 @@ var plugins = [
     new webpack.optimize.CommonsChunkPlugin('libs', 'libs.[hash].js')
 ];
 
-debug('Apply ' + environment + ' config file');
 //用环境去改变配置
-if (environment === __PROD__) {
+if (TARGET == 'build') {
     webpackConfig.module.loaders.push({
         test: /\.jsx?$/,
         loader: 'strip-loader?strip[]=log,strip[]=console.log',
@@ -127,10 +122,6 @@ if (environment === __PROD__) {
         }),
 
         new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            output: {
-                comments: false
-            },
             compress: {
                 warnings: false
             }
@@ -143,5 +134,4 @@ if (environment === __PROD__) {
 }
 
 webpackConfig.plugins = plugins;
-debug('Finished!!!!!!!!');
 module.exports = webpackConfig;
