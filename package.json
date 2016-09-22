@@ -4,7 +4,7 @@
 	"description": "练手用",
 	"main": "index.js",
 	"scripts": {
-		"start": "NODE_ENV=dev webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
+		"start": "NODE_ENV=development webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
 		"build": "NODE_ENV=production webpack --progress --profile --colors",
 		"server": "nodemon server.js"
 	},

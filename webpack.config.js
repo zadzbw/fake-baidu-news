@@ -73,7 +73,7 @@ var webpackConfig = {
     }
 };
 
-var env = TARGET == 'build' ? 'production' : 'dev';
+var env = TARGET == 'build' ? 'production' : 'development';
 
 var plugins = [
     new webpack.DefinePlugin({
