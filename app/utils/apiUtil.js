@@ -3,7 +3,8 @@
  */
 const apiUtil = {
     AUTH: '/auth',
-    HOT_NEWS: '/hot/news'
+    HOT_NEWS: '/hot/news',
+    CAROUSEL: '/carousel'
 };
 
 export default apiUtil;
