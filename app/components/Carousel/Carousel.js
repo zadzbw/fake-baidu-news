@@ -14,6 +14,10 @@ export default class Carousel extends React.Component {
         this.props.getCarousel();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return !(_.isEqual(nextProps, this.props) && _.isEqual(nextState, this.state));
+    }
+
     render() {
         return (
             <div className="carousel-container">

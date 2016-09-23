@@ -22,6 +22,10 @@ export default class HotNewsScroller extends React.Component {
         this.newsScroll();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return !(_.isEqual(nextProps, this.props) && _.isEqual(nextState, this.state));
+    }
+
     componentWillUnmount() {
         clearInterval(interval);
     }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './Login.less';
 
-let log = debug('news:/component/Login');
+var log = debug('news:/component/Login');
 
 export default class Login extends React.Component {
     constructor(props) {

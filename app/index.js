@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import store from 'store';
 
 //containers
 import HomeContainer from 'containers/Home/HomeContainer';
@@ -19,7 +18,7 @@ import SingleContainer from 'containers/Single/SingleContainer';
 //store
 import ReduxRootStore from './store/ReduxRootStore';
 
-store.set('debug', 'news:*');
+localStorage.debug = 'news:*';
 
 injectTapEventPlugin();
 
