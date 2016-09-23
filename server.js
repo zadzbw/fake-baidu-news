@@ -192,6 +192,14 @@ app.get('/carousel', (req, res)=> {
                 'imageUrl': 'http://timg01.baidu-img.cn/timg?tc&size=b218_136&sec=0&quality=75&cut_x=0&cut_y=4&cut_h=136&cut_w=0&di=e48b9ee6a256a8e9a199144d0c5fc396&src=http%3A%2F%2Ft10.baidu.com%2Fit%2Fu%3D3945780975%2C2237158160%26fm%3D170%26s%3DA29A1CC35622BF4752F4111E0100E0C1%26w%3D218%26h%3D146%26img.JPEG',
                 'site': '网易新闻',
                 'type': 'text'
+            },
+            {
+                'postId': 4,
+                'title': '最整洁流浪汉:被子叠成豆腐块',
+                'url': 'http://photo.sina.cn/album_1_2841_103536.htm?ch=1&fromsinago=1&page_start=1&page_end=100',
+                'imageUrl': 'http://timg01.baidu-img.cn/timg?tc&size=b675_422&sec=0&quality=75&cut_x=84&cut_y=0&cut_h=0&cut_w=675&di=91673fdedda63c7e650cdae5d0e28147&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fnews%2Fcrop%253D80%252C159%252C844%252C422%2Fsign%3Db5348be29ceef01f595b4285ddc6a909%2F377adab44aed2e738a6fb4aa8f01a18b86d6fab5.jpg',
+                'site': '新浪新闻',
+                'type': 'text'
             }
         ]
     );
