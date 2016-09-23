@@ -2,10 +2,15 @@
  * Created by zad on 16/9/22.
  */
 import React from 'react';
+import {connect} from 'react-redux';
 
 import './Home.less';
 
-export default class HomeContainer extends React.Component {
+import HomeAction from '../../actions/HomeAction';
+
+import Carousel from '../../components/Carousel/Carousel';
+
+class HomeContainer extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -13,8 +18,28 @@ export default class HomeContainer extends React.Component {
     render() {
         return (
             <div className="home-wrap">
-                {this.props.children}
+                <Carousel
+                    getCarousel={this.props.getCarousel}
+                    carousel={this.props.carousel}
+                />
             </div>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        carousel: state.Home.Carousel.carousel,
+        news: state.Home.NewsList.news,
+        status: state.Home.NewsList.status
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getCarousel: () => dispatch(HomeAction.getCarousel()),
+        getNewsList: () => dispatch(HomeAction.getNewsList())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

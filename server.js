@@ -39,6 +39,7 @@ app.post('/auth', (req, res)=> {
 app.get('/hot/news', (req, res)=> {
     res.send(
         {
+            'code': 'ok',
             'data': [
                 {
                     'title': '习近平：倡导清清爽爽的同志关系',
@@ -162,6 +163,37 @@ app.get('/hot/news', (req, res)=> {
                 }
             ]
         }
+    );
+});
+
+app.get('/carousel', (req, res)=> {
+    res.send(
+        [
+            {
+                'postId': 1,
+                'title': '黑老大豪车拍卖 宝马两万起',
+                'url': 'http://photo.sina.cn/album_1_2841_103512.htm?ch=1&fromsinago=1&page_start=1&page_end=100',
+                'imageurls': 'http://timg01.baidu-img.cn/timg?tc&size=b478_299&sec=0&quality=75&cut_x=59&cut_y=0&cut_h=0&cut_w=478&di=7fa69297e73bfc796e7cf75692c67cad&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fnews%2Fcrop%253D0%252C3%252C598%252C299%2Fsign%3D3f3416a5f5faaf5190acdbffb164b8dd%2F37d12f2eb9389b50beed5ed18d35e5dde7116e27.jpg',
+                'site': '新浪新闻',
+                'type': 'text'
+            },
+            {
+                'postId': 2,
+                'title': '死者家属邀60多人驾10多辆车堵医院',
+                'url': 'http://news.ifeng.com/a/20160922/50006533_0.shtml',
+                'imageurls': 'http://timg01.baidu-img.cn/timg?tc&size=b481_301&sec=0&quality=75&cut_x=60&cut_y=0&cut_h=0&cut_w=481&di=254f125fef0d0ec62ee54e319fecbaeb&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fnews%2Fcrop%253D31%252C36%252C602%252C301%2Fsign%3D5209bb873c9b033b38c7a69a28fd07ff%2F4d086e061d950a7b842be84702d162d9f2d3c913.jpg',
+                'site': '凤凰新闻',
+                'type': 'image'
+            },
+            {
+                'postId': 3,
+                'title': '高校宿舍甲醛超标 学生住校园',
+                'url': 'http://news.163.com/photoview/00AP0001/2199781.html',
+                'imageurls': 'http://timg01.baidu-img.cn/timg?tc&size=b218_136&sec=0&quality=75&cut_x=0&cut_y=4&cut_h=136&cut_w=0&di=e48b9ee6a256a8e9a199144d0c5fc396&src=http%3A%2F%2Ft10.baidu.com%2Fit%2Fu%3D3945780975%2C2237158160%26fm%3D170%26s%3DA29A1CC35622BF4752F4111E0100E0C1%26w%3D218%26h%3D146%26img.JPEG',
+                'site': '网易新闻',
+                'type': 'text'
+            }
+        ]
     );
 });
 
