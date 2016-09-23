@@ -28,11 +28,11 @@ export default class Header extends React.Component {
     render() {
         return (
             <header className="header">
-                <span className="toolbar-left side-padding" onTouchTap={this.toBack}>
+                <span className="toolbar-left side-padding" onClick={this.toBack}>
                     <i className="fa fa-chevron-left"/>
                 </span>
                 <span className="header-title">{this.props.title}</span>
-                <span className="toolbar-right side-padding" onTouchTap={this.toHome}>
+                <span className="toolbar-right side-padding" onClick={this.toHome}>
                     <i className="fa fa-home"/>
                 </span>
             </header>
