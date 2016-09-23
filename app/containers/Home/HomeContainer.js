@@ -22,6 +22,7 @@ class HomeContainer extends React.Component {
                     getCarousel={this.props.getCarousel}
                     carousel={this.props.carousel}
                 />
+                <div>these are news</div>
             </div>
         );
     }

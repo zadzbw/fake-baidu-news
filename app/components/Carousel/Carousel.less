@@ -1,6 +1,57 @@
-.carousel-container {
-    .carousel-content {
+@import "../../style/variables";
 
+.carousel-container {
+    position: relative;
+    margin-bottom: @gap * 2;
+
+    .carousel-content {
+        overflow: hidden;
+        visibility: visible;
+        position: relative;
+        margin: 15px 17px -28px;
+        height: auto;
+
+        .carousel-items {
+            overflow: hidden;
+            position: relative;
+
+            .carousel-item {
+                display: block;
+                float: left;
+                position: relative;
+                left: 0;
+                transition: transform 300ms ease-out;
+
+                img {
+                    width: calc(~"100vw - 34px");
+                    height: auto;
+                    min-height: 187px;
+                    display: block;
+                }
+
+                .carousel-item-text {
+                    width: 100%;
+                    position: absolute;
+                    bottom: 0;
+                    padding: 0 @gap;
+                    margin: 0;
+                    text-align: left;
+                    height: 28px;
+                    font-size: @font-size-base;
+                    color: @body-bg-1;
+                    background-color: rgba(0, 0, 0, .4);
+                    overflow: hidden;
+
+                    span {
+                        display: inline-block;
+                        text-align: left;
+                        height: 28px;
+                        line-height: 28px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
     }
 
     .carousel-nav {
