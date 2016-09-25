@@ -4,6 +4,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 
+import classNames from 'classnames';
+
 import './Carousel.less';
 
 var interval;
@@ -77,18 +79,21 @@ export default class Carousel extends React.Component {
 
     render() {
         var {index} = this.state;
-        var len = this.props.carousel.length;
-        var initArray = Carousel.getArray(len);
+        var {carousel} = this.props;
         var imageWidth = document.body.clientWidth - 34;
+        var len = carousel.length;
+        var initArray = Carousel.getArray(len); // [3, 0, 1, 2]
 
-        var items = this.props.carousel.map((item, i)=> {
+        var items = carousel.map((item, i)=> {
             var positionArray = Carousel.left_move(initArray, index);
+            // 以positionArray的第二项为视口
             var position = _.findIndex(positionArray, (value)=> {
                     return value == i;
                 }) - 1;
 
             var itemStyle = {
-                transitionDuration: '300ms',
+                // 正常来说是index + 1,但是因为数组第一项为-1,故为index + 2
+                transitionDuration: (((index + 2) % len) == i) ? '0ms' : '500ms',
                 transform: `translateX(${imageWidth * position}px)`,
                 left: `-${imageWidth * i}px`
             };
@@ -107,6 +112,11 @@ export default class Carousel extends React.Component {
             );
         });
 
+        var navItems = carousel.map((item, i)=> {
+            var navClass = classNames('carousel-nav-item', {current: index == i});
+            return (<div className={navClass} key={`carousel-nav-item${i}`}></div>);
+        });
+
         return (
             <div className="carousel-container">
                 <div className="carousel-content">
@@ -115,7 +125,9 @@ export default class Carousel extends React.Component {
                         {items}
                     </div>
                 </div>
-                <div className="carousel-nav">nav</div>
+                <div className="carousel-nav">
+                    {navItems}
+                </div>
             </div>
         );
     }
