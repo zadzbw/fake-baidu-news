@@ -8,13 +8,19 @@ import classNames from 'classnames';
 
 import './Carousel.less';
 
-var interval;
+var interval, startX, tempX, diffX, step;
 
 export default class Carousel extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {index: 0};
-        this.swiper = this.swiper.bind(this);
+        this.state = {
+            index: 0,
+            direction: 'left'
+        };
+        this.autoCarousel = this.autoCarousel.bind(this);
+        this.controlStart = this.controlStart.bind(this);
+        this.controlMove = this.controlMove.bind(this);
+        this.controlEnd = this.controlEnd.bind(this);
     }
 
     // 左移数组
@@ -45,7 +51,10 @@ export default class Carousel extends React.Component {
 
     componentDidMount() {
         this.props.getCarousel();
-        this.swiper();
+        this.autoCarousel();
+        this.refs.content.addEventListener('touchstart', this.controlStart, false);
+        this.refs.content.addEventListener('touchmove', this.controlMove, false);
+        this.refs.content.addEventListener('touchend', this.controlEnd, false);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -54,9 +63,12 @@ export default class Carousel extends React.Component {
 
     componentWillUnmount() {
         clearInterval(interval);
+        this.refs.content.removeEventListener('touchstart', this.controlStart, false);
+        this.refs.content.removeEventListener('touchmove', this.controlMove, false);
+        this.refs.content.removeEventListener('touchend', this.controlEnd, false);
     }
 
-    swiper() {
+    autoCarousel() {
         interval = setInterval(()=> {
             var len = this.props.carousel.length;
             var index = this.state.index;
@@ -64,25 +76,89 @@ export default class Carousel extends React.Component {
             if (len > 1) {
                 if (index < len - 1) {
                     this.setState({
-                        index: ++index
+                        index: ++index,
+                        direction: 'left'
                     });
                 } else {
                     this.setState({
-                        index: 0
+                        index: 0,
+                        direction: 'left'
                     });
                 }
             } else {
                 clearInterval(interval);
             }
-        }, 3000);
+        }, this.props.interval);
+    }
+
+    controlStart(e) {
+        clearInterval(interval);
+        startX = e.touches[0].clientX;
+        tempX = e.touches[0].clientX;
+        diffX = 0;
+    }
+
+    controlMove(e) {
+        diffX = e.touches[0].clientX - startX;
+        step = e.touches[0].clientX - tempX;
+        tempX = startX + diffX;
+
+        var carouselItems = document.getElementsByClassName('carousel-item');
+        Array.prototype.forEach.call(carouselItems, (item)=> {
+            var transform = item.style.transform;
+            var reg = /-?[0-9]+\.?[0-9]*/g;
+            var translateX = transform.match(reg)[0];
+            item.style.transitionDuration = '0ms';
+            item.style.transform = `translateX(${(~~translateX) + (~~step)}px)`;
+        });
+    }
+
+    controlEnd() {
+        this.autoCarousel();
+
+        var {index} = this.state;
+        var len = this.props.carousel.length;
+        var carouselItems = document.getElementsByClassName('carousel-item');
+
+        if (diffX > 150) {
+            // to right
+            // 如果向右move大于150px,则图片向右偏移
+            Array.prototype.forEach.call(carouselItems, (item, i)=> {
+                item.style.transitionDuration = (i == ((index - 2 + len) % len)) ? '0ms' : '400ms';
+            });
+
+            this.setState({
+                index: index > 0 ? index - 1 : len - 1,
+                direction: 'right'
+            });
+        } else if (diffX < -150) {
+            // to left
+            // 如果向左move大于150px,则图片向左偏移
+            Array.prototype.forEach.call(carouselItems, (item, i)=> {
+                item.style.transitionDuration = (i == ((index + 2 + len) % len)) ? '0ms' : '400ms';
+            });
+
+            this.setState({
+                index: index < len - 1 ? index + 1 : 0,
+                direction: 'left'
+            });
+        } else {
+            Array.prototype.forEach.call(carouselItems, (item)=> {
+                var transform = item.style.transform;
+                var reg = /-?[0-9]+\.?[0-9]*/g;
+                var translateX = transform.match(reg)[0];
+                item.style.transitionDuration = '400ms';
+                item.style.transform = `translateX(${(~~translateX) - (diffX)}px)`;
+            });
+        }
     }
 
     render() {
-        var {index} = this.state;
-        var {carousel} = this.props;
+        var {index, direction} = this.state;
         var imageWidth = document.body.clientWidth - 34;
+        var {carousel} = this.props;
         var len = carousel.length;
-        var initArray = Carousel.getArray(len); // [3, 0, 1, 2]
+        var initArray = Carousel.getArray(len);// [2, 0, 1]
 
         var items = carousel.map((item, i)=> {
             var positionArray = Carousel.left_move(initArray, index);
@@ -92,11 +168,14 @@ export default class Carousel extends React.Component {
                 }) - 1;
 
             var itemStyle = {
-                // 正常来说是index + 1,但是因为数组第一项为-1,故为index + 2
-                transitionDuration: (((index + 2) % len) == i) ? '0ms' : '500ms',
-                transform: `translateX(${imageWidth * position}px)`,
+                transform: `translateX(${imageWidth * (position)}px)`,
                 left: `-${imageWidth * i}px`
             };
+            if (direction == 'left') {
+                itemStyle.transitionDuration = (i == ((index + 1 + len) % len)) ? '0ms' : '400ms';
+            } else {
+                itemStyle.transitionDuration = (i == ((index - 1 + len) % len)) ? '0ms' : '400ms';
+            }
 
             return (
                 <Link className="carousel-item"
@@ -119,7 +198,7 @@ export default class Carousel extends React.Component {
 
         return (
             <div className="carousel-container">
-                <div className="carousel-content">
+                <div ref='content' className="carousel-content">
                     <div className="carousel-items"
                          style={{width: `${this.props.carousel.length * (document.body.clientWidth - 34)}px`}}>
                         {items}
@@ -132,3 +211,7 @@ export default class Carousel extends React.Component {
         );
     }
 }
+
+Carousel.propTypes = {
+    interval: React.PropTypes.number.isRequired
+};

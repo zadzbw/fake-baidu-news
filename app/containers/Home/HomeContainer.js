@@ -21,6 +21,7 @@ class HomeContainer extends React.Component {
                 <Carousel
                     getCarousel={this.props.getCarousel}
                     carousel={this.props.carousel}
+                    interval={4000}
                 />
                 <div>these are news</div>
             </div>
