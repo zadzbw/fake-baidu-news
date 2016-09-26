@@ -124,7 +124,7 @@ export default class Carousel extends React.Component {
             // to right
             // 如果向右move大于150px,则图片向右偏移
             Array.prototype.forEach.call(carouselItems, (item, i)=> {
-                item.style.transitionDuration = (i == ((index - 2 + len) % len)) ? '0ms' : '400ms';
+                item.style.transitionDuration = (i == index || i == ((index - 1 + len) % len)) ? '400ms' : '0ms';
             });
 
             this.setState({
@@ -135,7 +135,7 @@ export default class Carousel extends React.Component {
             // to left
             // 如果向左move大于150px,则图片向左偏移
             Array.prototype.forEach.call(carouselItems, (item, i)=> {
-                item.style.transitionDuration = (i == ((index + 2 + len) % len)) ? '0ms' : '400ms';
+                item.style.transitionDuration = (i == index || i == ((index + 1 + len) % len)) ? '400ms' : '0ms';
             });
 
             this.setState({
@@ -143,12 +143,20 @@ export default class Carousel extends React.Component {
                 direction: 'left'
             });
         } else {
-            Array.prototype.forEach.call(carouselItems, (item)=> {
+            var initArray = Carousel.getArray(len);// [2, 0, 1]
+            var imageWidth = document.body.clientWidth - 34;
+
+            Array.prototype.forEach.call(carouselItems, (item, i)=> {
+                var positionArray = Carousel.left_move(initArray, index);
+                var position = _.findIndex(positionArray, (value)=> {
+                        return value == i;
+                    }) - 1;
+
                 var transform = item.style.transform;
                 var reg = /-?[0-9]+\.?[0-9]*/g;
                 var translateX = transform.match(reg)[0];
                 item.style.transitionDuration = '400ms';
-                item.style.transform = `translateX(${(~~translateX) - (diffX)}px)`;
+                item.style.transform = `translateX(${imageWidth * (position)}px)`;
             });
         }
     }
@@ -172,9 +180,9 @@ export default class Carousel extends React.Component {
                 left: `-${imageWidth * i}px`
             };
             if (direction == 'left') {
-                itemStyle.transitionDuration = (i == ((index + 1 + len) % len)) ? '0ms' : '400ms';
-            } else {
-                itemStyle.transitionDuration = (i == ((index - 1 + len) % len)) ? '0ms' : '400ms';
+                itemStyle.transitionDuration = (i == index || i == ((index - 1 + len) % len)) ? '400ms' : '0ms';
+            } else if (direction == 'right') {
+                itemStyle.transitionDuration = (i == index || i == ((index + 1 + len) % len)) ? '400ms' : '0ms';
             }
 
             return (
