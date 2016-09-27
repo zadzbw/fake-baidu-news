@@ -6,15 +6,17 @@
  */
 import {exec} from 'child_process';
 import _debug from 'debug';
-import {version} from '../package.json';
 
 var log = _debug('news:release');
 
 let tags = {};
 
-exec('ggpush', (error, stdout, stderr) => {
+exec('git push origin develop', (error, stdout, stderr) => {
     exec('git checkout master', (error, stdout, stderr) => {
-        exec('ggpull && git merge --no-ff develop', (error, stdout, stderr) => {
+        exec('git pull && git merge --no-ff develop', (error, stdout, stderr) => {
+            exec('git push origin master', (error, stdout, stderr) => {
+                log(1);
+            });
         });
     });
 });
