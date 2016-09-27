@@ -6,6 +6,7 @@
 	"scripts": {
 		"start": "NODE_ENV=development webpack-dev-server --hot --inline --progress --colors --history-api-fallback & npm run server",
 		"build": "NODE_ENV=production webpack --progress --profile --colors",
+		"push": "DEBUG=news:* babel-node bin/push",
 		"server": "nodemon server.js"
 	},
 	"repository": {

@@ -31,7 +31,7 @@ class HomeContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        carousel: state.Home.Carousel.carousel,
+        carousel: state.Home.Carousel.carousel.toJS(),
         news: state.Home.NewsList.news,
         status: state.Home.NewsList.status
     };
