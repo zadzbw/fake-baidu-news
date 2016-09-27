@@ -2,13 +2,14 @@
  * Created by zad on 16/9/27.
  */
 /*
- * automate tag
+ * auto merge to master
  */
 import {exec} from 'child_process';
 import _debug from 'debug';
 
 var log = _debug('news:release');
 
+log('push branch develop start!!!');
 exec('git push origin develop', () => {
     log('branch develop has been pushed');
     exec('git checkout master', () => {
