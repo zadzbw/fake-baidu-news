@@ -5,11 +5,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import HotNewsAction from '../../actions/HotNewsAction';
+
 import HotNewsScroller from '../../components/HotNewsScroller/HotNewsScroller';
 
 class SingleContainer extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        this.props.getHotNews();
     }
 
     render() {
@@ -19,7 +24,6 @@ class SingleContainer extends React.Component {
                      style={{backgroundColor: '#f5f5f5', paddingTop: '14px', borderBottom: '1px solid #ddd'}}
                 >
                     <HotNewsScroller
-                        getHotNews={this.props.getHotNews}
                         hotNews={this.props.hotNews}
                         interval={4000}
                     />
@@ -31,7 +35,7 @@ class SingleContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        hotNews: state.HotNews.news.toJS(),
+        hotNews: state.HotNews.news,
         status: state.HotNews.status
     };
 }

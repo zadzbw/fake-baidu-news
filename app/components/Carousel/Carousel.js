@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {Link} from 'react-router';
+import {is} from 'immutable';
 
 import classNames from 'classnames';
 
@@ -50,7 +51,6 @@ export default class Carousel extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getCarousel();
         this.autoCarousel();
         this.refs.content.addEventListener('touchstart', this.controlStart, false);
         this.refs.content.addEventListener('touchmove', this.controlMove, false);
@@ -58,7 +58,7 @@ export default class Carousel extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return !(_.isEqual(nextProps, this.props) && _.isEqual(nextState, this.state));
+        return !(is(nextProps, this.props) && _.isEqual(nextState, this.state));
     }
 
     componentWillUnmount() {
@@ -70,7 +70,7 @@ export default class Carousel extends React.Component {
 
     autoCarousel() {
         interval = setInterval(()=> {
-            var len = this.props.carousel.length;
+            var len = this.props.carousel.toJS().length;
             var index = this.state.index;
 
             if (len > 1) {
@@ -117,7 +117,7 @@ export default class Carousel extends React.Component {
         this.autoCarousel();
 
         var {index} = this.state;
-        var len = this.props.carousel.length;
+        var len = this.props.carousel.toJS().length;
         var carouselItems = document.getElementsByClassName('carousel-item');
 
         if (diffX > 150) {
@@ -164,7 +164,7 @@ export default class Carousel extends React.Component {
     render() {
         var {index, direction} = this.state;
         var imageWidth = document.body.clientWidth - 34;
-        var {carousel} = this.props;
+        var carousel = this.props.carousel.toJS();
         var len = carousel.length;
         var initArray = Carousel.getArray(len);// [2, 0, 1]
 
@@ -208,7 +208,7 @@ export default class Carousel extends React.Component {
             <div className="carousel-container">
                 <div ref='content' className="carousel-content">
                     <div className="carousel-items"
-                         style={{width: `${this.props.carousel.length * (document.body.clientWidth - 34)}px`}}>
+                         style={{width: `${this.props.carousel.toJS().length * (document.body.clientWidth - 34)}px`}}>
                         {items}
                     </div>
                 </div>
@@ -221,5 +221,6 @@ export default class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
-    interval: React.PropTypes.number.isRequired
+    interval: React.PropTypes.number.isRequired,
+    carousel: React.PropTypes.object.isRequired
 };
