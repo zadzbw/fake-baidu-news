@@ -34,7 +34,7 @@ function urlBuilder(url, params = {}) {
     return url + (result.length ? '?' + result.join('&') : '');
 }
 
-export default class HTTPUtil {
+export default class httpUtil {
     /**
      * General settings for methods
      * @param {string} method
@@ -60,18 +60,18 @@ export default class HTTPUtil {
     }
 
     static POST(url, payload) {
-        return HTTPUtil.send('POST', url, payload);
+        return httpUtil.send('POST', url, payload);
     }
 
     static GET(url, params) {
-        return HTTPUtil.send('GET', urlBuilder(url, params));
+        return httpUtil.send('GET', urlBuilder(url, params));
     }
 
     static PUT(url, payload) {
-        return HTTPUtil.send('PUT', url, payload);
+        return httpUtil.send('PUT', url, payload);
     }
 
     static DELETE(url, payload) {
-        return HTTPUtil.send('DELETE', url, payload);
+        return httpUtil.send('DELETE', url, payload);
     }
 }
