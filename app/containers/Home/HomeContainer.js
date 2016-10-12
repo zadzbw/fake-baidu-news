@@ -7,8 +7,10 @@ import {connect} from 'react-redux';
 import './Home.less';
 
 import HomeAction from '../../actions/HomeAction';
+import HotNewsAction from '../../actions/HotNewsAction';
 
 import Carousel from '../../components/Carousel/Carousel';
+import HotNewsScroller from '../../components/HotNewsScroller/HotNewsScroller';
 
 class HomeContainer extends React.Component {
     constructor(props) {
@@ -23,6 +25,11 @@ class HomeContainer extends React.Component {
                     carousel={this.props.carousel}
                     interval={4000}
                 />
+                <HotNewsScroller
+                    getHotNews={this.props.getHotNews}
+                    hotNews={this.props.hotNews}
+                    interval={4000}
+                />
                 <div>these are news</div>
             </div>
         );
@@ -32,6 +39,7 @@ class HomeContainer extends React.Component {
 function mapStateToProps(state) {
     return {
         carousel: state.Home.Carousel.carousel.toJS(),
+        hotNews: state.HotNews.news.toJS(),
         news: state.Home.NewsList.news,
         status: state.Home.NewsList.status
     };
@@ -40,7 +48,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getCarousel: () => dispatch(HomeAction.getCarousel()),
-        getNewsList: () => dispatch(HomeAction.getNewsList())
+        getNewsList: () => dispatch(HomeAction.getNewsList()),
+        getHotNews: () => dispatch(HotNewsAction.getHotNews())
     };
 }
 

@@ -5,6 +5,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import HotNewsAction from '../../actions/HotNewsAction';
+
 import HotNewsScroller from '../../components/HotNewsScroller/HotNewsScroller';
 
 class SingleContainer extends React.Component {
