@@ -2,6 +2,7 @@
  * Created by zad on 16/9/22.
  */
 import React from 'react';
+import {is} from 'immutable';
 
 import './HotNewsScroller.less';
 
@@ -22,7 +23,7 @@ export default class HotNewsScroller extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return !(_.isEqual(nextProps, this.props) && _.isEqual(nextState, this.state));
+        return !(is(nextProps, this.props) && _.isEqual(nextState, this.state));
     }
 
     componentWillUnmount() {
@@ -31,7 +32,7 @@ export default class HotNewsScroller extends React.Component {
 
     newsScroll() {
         interval = setInterval(()=> {
-            var totalOffset = this.props.hotNews.data.length - 1;
+            var totalOffset = this.props.hotNews.toJS().data.length - 1;
             var marginTop = this.state.marginTop;
 
             // 如果hot_news的个数为0或1,则不进行scroll
@@ -54,7 +55,7 @@ export default class HotNewsScroller extends React.Component {
     }
 
     render() {
-        var {hotNews} = this.props;
+        var hotNews = this.props.hotNews.toJS();
         var items = hotNews.data.map((item, i)=> {
             return (
                 <li className="hot-news-item" key={`hot_news_${i}`}>

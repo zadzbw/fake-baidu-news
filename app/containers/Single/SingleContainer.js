@@ -35,7 +35,7 @@ class SingleContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        hotNews: state.HotNews.news.toJS(),
+        hotNews: state.HotNews.news,
         status: state.HotNews.status
     };
 }
