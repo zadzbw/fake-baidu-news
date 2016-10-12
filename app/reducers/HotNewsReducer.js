@@ -5,10 +5,10 @@ import {DO_GET_HOT_NEWS, GET_HOT_NEWS_SUCCESS, GET_HOT_NEWS_FAIL} from '../actio
 
 import Immutable from 'immutable';
 
-export default function (state = {news: {code: 'wait', data: []}, status: 'wait'}, action) {
+export default function (state = {news: Immutable.fromJS({code: 'wait', data: []}), status: 'wait'}, action) {
     switch (action.type) {
         case DO_GET_HOT_NEWS:
-            return {news: Immutable.fromJS(state.news), status: 'get_hot_news_on_progress'};
+            return {news: state.news, status: 'get_hot_news_on_progress'};
         case GET_HOT_NEWS_SUCCESS:
             return {news: Immutable.fromJS(action.data), status: 'get_hot_news_success'};
         case GET_HOT_NEWS_FAIL:
