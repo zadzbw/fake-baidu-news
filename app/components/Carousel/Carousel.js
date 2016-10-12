@@ -50,7 +50,6 @@ export default class Carousel extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getCarousel();
         this.autoCarousel();
         this.refs.content.addEventListener('touchstart', this.controlStart, false);
         this.refs.content.addEventListener('touchmove', this.controlMove, false);
@@ -221,5 +220,6 @@ export default class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
-    interval: React.PropTypes.number.isRequired
+    interval: React.PropTypes.number.isRequired,
+    carousel: React.PropTypes.array.isRequired
 };

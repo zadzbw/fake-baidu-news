@@ -17,16 +17,19 @@ class HomeContainer extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getCarousel();
+        this.props.getHotNews();
+    }
+
     render() {
         return (
             <div className="home-wrap">
                 <Carousel
-                    getCarousel={this.props.getCarousel}
                     carousel={this.props.carousel}
                     interval={4000}
                 />
                 <HotNewsScroller
-                    getHotNews={this.props.getHotNews}
                     hotNews={this.props.hotNews}
                     interval={4000}
                 />

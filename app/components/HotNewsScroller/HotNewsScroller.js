@@ -18,7 +18,6 @@ export default class HotNewsScroller extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getHotNews();
         this.newsScroll();
     }
 

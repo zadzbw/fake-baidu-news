@@ -13,6 +13,10 @@ class SingleContainer extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getHotNews();
+    }
+
     render() {
         return (
             <div className="single-container">
@@ -20,7 +24,6 @@ class SingleContainer extends React.Component {
                      style={{backgroundColor: '#f5f5f5', paddingTop: '14px', borderBottom: '1px solid #ddd'}}
                 >
                     <HotNewsScroller
-                        getHotNews={this.props.getHotNews}
                         hotNews={this.props.hotNews}
                         interval={4000}
                     />
