@@ -205,6 +205,218 @@ app.get('/carousel', (req, res)=> {
     );
 });
 
+app.get('/newslist', (req, res)=> {
+    res.send(
+        {
+            'top': {
+                'postId': 5,
+                'title': '金砖国家合作 习近平这样说',
+                'url': 'http://news.baidu.com/n?cmd=2&class=detail&article_id=1476154886171',
+                'imageUrls': [
+                    {
+                        'url': 'http://f.hiphotos.baidu.com/news/q%3D100/sign=b1563e95e3f81a4c2032e8c9e72b6029/00e93901213fb80ec689ed363ed12f2eb83894f3.jpg'
+                    }
+                ],
+                'site': '新华网',
+                'type': 'hot',
+                'topic': [
+                    {
+                        'name': '热点'
+                    }
+                ]
+            },
+            'news': [
+                {
+                    'postId': 6,
+                    'title': '三星在中国召回后第一天 央视暗访结果竟是这样',
+                    'url': 'http://3g.k.sohu.com/t/n159634086',
+                    'imageUrls': [],
+                    'site': '搜狐新闻',
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '搜狐要闻'
+                        }
+                    ]
+                },
+                {
+                    'postId': 7,
+                    'title': '浓眉哥遭内内踩脚 扭伤脚踝退赛仅打一节得2分',
+                    'url': 'http://sports.163.com/16/1012/20/C371DLT40005877U.html',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t11.baidu.com/it/u=2121438565,3214197187&fm=170&s=9F327D8218712596A6A4CC080300B0D1&w=218&h=145&img.PNG'
+                        }
+                    ],
+                    'site': '网易新闻',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 8,
+                    'title': '周杰伦昆凌游迪士尼 为女儿选公仔超有爱',
+                    'url': 'http://www.1905.com/news/20161012/1108839.shtml',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t12.baidu.com/it/u=2070936497,803183366&fm=170&s=28D26D854C6082D2166164B30300F002&w=218&h=146&img.JPEG'
+                        }
+                    ],
+                    'site': '1905电影网',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 9,
+                    'title': '油长讲话讲话拖累油价 美原油跌破50美元大关',
+                    'url': 'http://finance.ifeng.com/a/20161012/14932592_0.shtml',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t11.baidu.com/it/u=2589822550,4285367166&fm=170&s=3F9D478652E13CACC99FCF250300E04A&w=218&h=146&img.JPEG'
+                        },
+                        {
+                            'url': 'http://t12.baidu.com/it/u=3711925331,531363213&fm=170&s=04BCEC321BC248411254B1CA000030B1&w=218&h=146&img.JPEG'
+                        },
+                        {
+                            'url': 'http://t10.baidu.com/it/u=1066739088,2540795795&fm=170&s=00FCEC321B024C4918DCF0CA0000E0B1&w=218&h=146&img.JPEG'
+                        }
+                    ],
+                    'site': '凤凰财经',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 10,
+                    'title': '英国机场英镑跌破1欧元',
+                    'url': 'http://news.xinhuanet.com/world/2016-10/12/c_129318308.htm',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t11.baidu.com/it/u=1435600180,1930151194&fm=170&s=5FF229C55C739AD65F79E10F030020C3&w=218&h=146&img.JPEG'
+                        }
+                    ],
+                    'site': '新华网',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 11,
+                    'title': '哈登14+8+6浓眉哥伤退 中国赛火箭再胜鹈鹕',
+                    'url': 'http://3g.k.sohu.com/t/n159632072',
+                    'imageUrls': [],
+                    'site': '搜狐新闻',
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '搜狐要闻'
+                        }
+                    ]
+                },
+                {
+                    'postId': 12,
+                    'title': '传3名台湾人菲律宾遇害 台方：死者为韩国人',
+                    'url': 'http://3g.k.sohu.com/t/n159635326',
+                    'imageUrls': [],
+                    'site': '搜狐新闻',
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '搜狐要闻'
+                        }
+                    ]
+                },
+                {
+                    'postId': 13,
+                    'title': '节后晒业绩 这些利润暴增股价翻倍的票你get到了吗？',
+                    'url': 'http://stock.10jqka.com.cn/20161012/c593937094.shtml',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t12.baidu.com/it/u=1977643166,1006480764&fm=170&s=46F030D31FBFC0CA4A753C5A0300C070&w=218&h=146&img.JPEG'
+                        }
+                    ],
+                    'site': '同花顺',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 14,
+                    'title': '今日新股上市一览:中通赴美IPO融资15亿美元 利润直逼顺丰源于会',
+                    'url': 'http://www.southmoney.com/gupiao/newstock/201610/790774.html',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t11.baidu.com/it/u=1112758399,3030184817&fm=170&s=DA474C964E525FF17D0DA0E003003021&w=218&h=146&img.JPG'
+                        },
+                        {
+                            'url': 'http://t11.baidu.com/it/u=1075658599,2960753095&fm=170&s=39E7CC1232837AE6C90A93F503001029&w=218&h=146&img.JPEG'
+                        },
+                        {
+                            'url': 'http://t12.baidu.com/it/u=1164477602,3494794278&fm=170&s=7010359E77226CAC087905F20300B032&w=218&h=146&img.JPEG'
+                        }
+                    ],
+                    'site': '南方财富网',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 15,
+                    'title': '重组深深房A迁址深圳 恒大构建地产金融3万亿大棋局 ',
+                    'url': 'http://stock.jrj.com.cn/2016/10/12060521557160.shtml',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t11.baidu.com/it/u=1473793471,3763820000&fm=170&s=AF92E306C8B96F8E5AF15CC9030080B2&w=218&h=146&img.JPEG'
+                        }
+                    ],
+                    'site': '金融界',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 16,
+                    'title': '半年违约9次和欠债累计58亿 东北特钢进入破产重整程序',
+                    'url': 'http://finance.eastmoney.com/news/1354,20161012671770784.html',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t12.baidu.com/it/u=563450852,3103524217&fm=170&s=749EE8321749514154D461DE000080B2&w=218&h=146&img.JPG'
+                        }
+                    ],
+                    'site': '东方财富网',
+                    'type': 'info',
+                    'topic': []
+                },
+                {
+                    'postId': 17,
+                    'title': '中消协:消费者退换Note7 三星不得以手机有损拒绝',
+                    'url': 'http://m.cankaoxiaoxi.com/baidunews-eco/finance/20161012/1339714.shtml',
+                    'imageUrls': [],
+                    'site': '手机参考消息网',
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '新浪要闻'
+                        }
+                    ]
+                },
+                {
+                    'postId': 18,
+                    'title': '他们蜗居20元小旅馆，只为省看病钱',
+                    'url': 'https://view.inews.qq.com/a/20161012A02LNZ001Y3',
+                    'imageUrls': [
+                        {
+                            'url': 'http://t11.baidu.com/it/u=3178462762,187809555&fm=170&s=23A2DC4B489286D64015A885030080C3&w=640&h=360&img.JPEG'
+                        }
+                    ],
+                    'site': '腾讯新闻',
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '腾讯要闻'
+                        }
+                    ]
+                }
+            ],
+            'total': 100
+        }
+    );
+});
+
 app.listen(5000, ()=> {
     console.log('server has started!!!');
 });

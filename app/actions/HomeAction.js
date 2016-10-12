@@ -41,7 +41,7 @@ var HomeAction = {
                 type: DO_GET_NEWS_LIST
             });
 
-            httpUtil.GET(apiUtil.CAROUSEL)
+            httpUtil.GET(apiUtil.GET_NEWS_LIST)
                 .then((res)=> {
                     dispatch({
                         type: GET_NEWS_LIST_SUCCESS,

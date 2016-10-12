@@ -20,6 +20,7 @@ class HomeContainer extends React.Component {
     componentDidMount() {
         this.props.getCarousel();
         this.props.getHotNews();
+        this.props.getNewsList();
     }
 
     render() {
