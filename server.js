@@ -187,14 +187,6 @@ app.get('/carousel', (req, res)=> {
             },
             {
                 'postId': 3,
-                'title': '北京长安街现\'土豪金\'赵州桥',
-                'url': 'http://photo.sina.cn/album_1_2841_103567.htm?ch=1&fromsinago=1&page_start=1&page_end=100',
-                'imageUrl': 'http://timg01.baidu-img.cn/timg?tc&size=b758_474&sec=0&quality=75&cut_x=94&cut_y=0&cut_h=0&cut_w=758&di=27c8ce38391734848e657a4891c82f04&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fnews%2Fcrop%253D0%252C0%252C948%252C474%2Fsign%3D61ba6df328a446236a85ff22a5125e3e%2F58ee3d6d55fbb2fb4f8e4f9b474a20a44723dc95.jpg',
-                'site': '新浪新闻',
-                'type': 'text'
-            },
-            {
-                'postId': 4,
                 'title': '丁俊晖生涯12冠 天才少年曾1年4冠',
                 'url': 'https://view.inews.qq.com/a/NEW2016092600442601',
                 'imageUrl': 'http://timg01.baidu-img.cn/timg?tc&size=b502_314&sec=0&quality=75&cut_x=63&cut_y=0&cut_h=0&cut_w=502&di=f4f16d86da7a2b0e580f90251d3c2e75&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fnews%2Fcrop%253D10%252C11%252C629%252C314%2Fsign%3D8fed279719dfa9ece9610c575fe1c72f%2F4afbfbedab64034f05ce878da7c379310a551d3d.jpg',

@@ -99,17 +99,20 @@ export default class Carousel extends React.Component {
     }
 
     controlMove(e) {
+        //在滑动时,禁止页面滚动
+        e.preventDefault();
+
         diffX = e.touches[0].clientX - startX;
         step = e.touches[0].clientX - tempX;
         tempX = startX + diffX;
 
         var carouselItems = document.getElementsByClassName('carousel-item');
         Array.prototype.forEach.call(carouselItems, (item)=> {
-            var transform = item.style.transform;
+            var WebkitTransform = item.style.WebkitTransform;
             var reg = /-?[0-9]+\.?[0-9]*/g;
-            var translateX = transform.match(reg)[0];
+            var translateX = WebkitTransform.match(reg)[0];
             item.style.transitionDuration = '0ms';
-            item.style.transform = `translateX(${(~~translateX) + (~~step)}px)`;
+            item.style.WebkitTransform = `translateX(${(~~translateX) + (~~step)}px)`;
         });
     }
 
@@ -152,11 +155,11 @@ export default class Carousel extends React.Component {
                         return value == i;
                     }) - 1;
 
-                var transform = item.style.transform;
+                var WebkitTransform = item.style.WebkitTransform;
                 var reg = /-?[0-9]+\.?[0-9]*/g;
-                var translateX = transform.match(reg)[0];
+                var translateX = WebkitTransform.match(reg)[0];
                 item.style.transitionDuration = '400ms';
-                item.style.transform = `translateX(${imageWidth * (position)}px)`;
+                item.style.WebkitTransform = `translateX(${imageWidth * (position)}px)`;
             });
         }
     }
@@ -176,7 +179,7 @@ export default class Carousel extends React.Component {
                 }) - 1;
 
             var itemStyle = {
-                transform: `translateX(${imageWidth * (position)}px)`,
+                WebkitTransform: `translateX(${imageWidth * (position)}px)`,
                 left: `-${imageWidth * i}px`
             };
             if (direction == 'left') {
