@@ -5,7 +5,31 @@ import {DO_GET_NEWS_LIST, GET_NEWS_LIST_SUCCESS, GET_NEWS_LIST_FAIL} from '../..
 
 import Immutable from 'immutable';
 
-export default function (state = {news: Immutable.fromJS({top: {}, news: [], total: 200}), status: 'wait'}, action) {
+var initNewsList = {
+    total: 200,
+    top: {
+        postId: 5,
+        title: '',
+        url: '',
+        imageUrls: [],
+        site: '',
+        type: '',
+        topic: []
+    },
+    news: [
+        {
+            postId: 6,
+            title: '',
+            url: '',
+            imageUrls: [],
+            site: '',
+            type: '',
+            topic: []
+        }
+    ]
+};
+
+export default function (state = {news: Immutable.fromJS(initNewsList), status: 'wait'}, action) {
     switch (action.type) {
         case DO_GET_NEWS_LIST:
             return {news: state.news, status: 'get_news_list_on_progress'};

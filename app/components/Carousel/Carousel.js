@@ -58,7 +58,7 @@ export default class Carousel extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return !(is(nextProps, this.props) && _.isEqual(nextState, this.state));
+        return !(is(nextProps.carousel, this.props.carousel) && _.isEqual(nextState, this.state));
     }
 
     componentWillUnmount() {

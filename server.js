@@ -249,8 +249,12 @@ app.get('/newslist', (req, res)=> {
                         }
                     ],
                     'site': '网易新闻',
-                    'type': 'info',
-                    'topic': []
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '网易要闻'
+                        }
+                    ]
                 },
                 {
                     'postId': 8,
@@ -281,8 +285,12 @@ app.get('/newslist', (req, res)=> {
                         }
                     ],
                     'site': '凤凰财经',
-                    'type': 'info',
-                    'topic': []
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '财经要闻'
+                        }
+                    ]
                 },
                 {
                     'postId': 10,
@@ -294,8 +302,12 @@ app.get('/newslist', (req, res)=> {
                         }
                     ],
                     'site': '新华网',
-                    'type': 'info',
-                    'topic': []
+                    'type': 'hot',
+                    'topic': [
+                        {
+                            'name': '经济要闻'
+                        }
+                    ]
                 },
                 {
                     'postId': 11,
@@ -366,7 +378,11 @@ app.get('/newslist', (req, res)=> {
                     ],
                     'site': '金融界',
                     'type': 'info',
-                    'topic': []
+                    'topic': [
+                        {
+                            'name': '金融要闻'
+                        }
+                    ]
                 },
                 {
                     'postId': 16,

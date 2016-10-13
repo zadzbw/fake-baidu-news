@@ -11,6 +11,7 @@ import HotNewsAction from '../../actions/HotNewsAction';
 
 import Carousel from '../../components/Carousel/Carousel';
 import HotNewsScroller from '../../components/HotNewsScroller/HotNewsScroller';
+import NewsList from '../../components/NewsList/NewsList';
 
 class HomeContainer extends React.Component {
     constructor(props) {
@@ -34,7 +35,9 @@ class HomeContainer extends React.Component {
                     hotNews={this.props.hotNews}
                     interval={4000}
                 />
-                <div>these are news</div>
+                <NewsList
+                    newsList={this.props.newsList}
+                />
             </div>
         );
     }
@@ -44,7 +47,7 @@ function mapStateToProps(state) {
     return {
         carousel: state.Home.Carousel.carousel,
         hotNews: state.HotNews.news,
-        news: state.Home.NewsList.news,
+        newsList: state.Home.NewsList.news,
         status: state.Home.NewsList.status
     };
 }
@@ -52,8 +55,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getCarousel: () => dispatch(HomeAction.getCarousel()),
-        getNewsList: () => dispatch(HomeAction.getNewsList()),
-        getHotNews: () => dispatch(HotNewsAction.getHotNews())
+        getHotNews: () => dispatch(HotNewsAction.getHotNews()),
+        getNewsList: () => dispatch(HomeAction.getNewsList())
     };
 }
 
