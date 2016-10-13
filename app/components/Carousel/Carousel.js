@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import './Carousel.less';
 
 var interval, startX, tempX, diffX, step;
+var startTime, diffTime;
 
 export default class Carousel extends React.Component {
     constructor(props) {
@@ -96,6 +97,7 @@ export default class Carousel extends React.Component {
         startX = e.touches[0].clientX;
         tempX = e.touches[0].clientX;
         diffX = 0;
+        startTime = +new Date();
     }
 
     controlMove(e) {
@@ -123,7 +125,10 @@ export default class Carousel extends React.Component {
         var len = this.props.carousel.toJS().length;
         var carouselItems = document.getElementsByClassName('carousel-item');
 
-        if (diffX > 150) {
+        diffTime = (+new Date() - startTime) / 1000;
+        var speed = diffX / diffTime;
+
+        if (diffX > 150 || speed > 200) {
             // to right
             // 如果向右move大于150px,则图片向右偏移
             Array.prototype.forEach.call(carouselItems, (item, i)=> {
@@ -134,7 +139,7 @@ export default class Carousel extends React.Component {
                 index: index > 0 ? index - 1 : len - 1,
                 direction: 'right'
             });
-        } else if (diffX < -150) {
+        } else if (diffX < -150 || speed < -200) {
             // to left
             // 如果向左move大于150px,则图片向左偏移
             Array.prototype.forEach.call(carouselItems, (item, i)=> {
