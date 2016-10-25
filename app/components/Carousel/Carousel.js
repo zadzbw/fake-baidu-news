@@ -111,10 +111,13 @@ export default class Carousel extends React.Component {
         var carouselItems = document.getElementsByClassName('carousel-item');
         Array.prototype.forEach.call(carouselItems, (item)=> {
             var WebkitTransform = item.style.WebkitTransform;
+            var transform = item.style.transform;
             var reg = /-?[0-9]+\.?[0-9]*/g;
-            var translateX = WebkitTransform.match(reg)[0];
+            var WebkitTranslateX = WebkitTransform.match(reg)[0];
+            var translateX = transform.match(reg)[0];
             item.style.transitionDuration = '0ms';
-            item.style.WebkitTransform = `translateX(${(~~translateX) + (~~step)}px)`;
+            item.style.WebkitTransform = `translateX(${(~~WebkitTranslateX) + (~~step)}px)`;
+            item.style.transform = `translateX(${(~~translateX) + (~~step)}px)`;
         });
     }
 
@@ -160,11 +163,9 @@ export default class Carousel extends React.Component {
                         return value == i;
                     }) - 1;
 
-                var WebkitTransform = item.style.WebkitTransform;
-                var reg = /-?[0-9]+\.?[0-9]*/g;
-                var translateX = WebkitTransform.match(reg)[0];
                 item.style.transitionDuration = '400ms';
                 item.style.WebkitTransform = `translateX(${imageWidth * (position)}px)`;
+                item.style.transform = `translateX(${imageWidth * (position)}px)`;
             });
         }
     }
@@ -185,6 +186,7 @@ export default class Carousel extends React.Component {
 
             var itemStyle = {
                 WebkitTransform: `translateX(${imageWidth * (position)}px)`,
+                transform: `translateX(${imageWidth * (position)}px)`,
                 left: `-${imageWidth * i}px`
             };
             if (direction == 'left') {
