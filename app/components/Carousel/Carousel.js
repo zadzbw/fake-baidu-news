@@ -106,7 +106,7 @@ export default class Carousel extends React.Component {
 
         diffX = e.touches[0].clientX - startX;
         step = e.touches[0].clientX - tempX;
-        tempX = startX + diffX;
+        tempX = e.touches[0].clientX;
 
         var carouselItems = document.getElementsByClassName('carousel-item');
         Array.prototype.forEach.call(carouselItems, (item)=> {
