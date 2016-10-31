@@ -53,9 +53,6 @@ export default class Carousel extends React.Component {
 
     componentDidMount() {
         this.autoCarousel();
-        this.refs.content.addEventListener('touchstart', this.controlStart, false);
-        this.refs.content.addEventListener('touchmove', this.controlMove, false);
-        this.refs.content.addEventListener('touchend', this.controlEnd, false);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -64,9 +61,6 @@ export default class Carousel extends React.Component {
 
     componentWillUnmount() {
         clearInterval(interval);
-        this.refs.content.removeEventListener('touchstart', this.controlStart, false);
-        this.refs.content.removeEventListener('touchmove', this.controlMove, false);
-        this.refs.content.removeEventListener('touchend', this.controlEnd, false);
     }
 
     autoCarousel() {
@@ -216,7 +210,12 @@ export default class Carousel extends React.Component {
 
         return (
             <div className="carousel-container">
-                <div ref='content' className="carousel-content">
+                <div
+                    onTouchStart={this.controlStart}
+                    onTouchMove={this.controlMove}
+                    onTouchEnd={this.controlEnd}
+                    className="carousel-content"
+                >
                     <div className="carousel-items"
                          style={{width: `${this.props.carousel.toJS().length * (document.body.clientWidth - 34)}px`}}>
                         {items}
